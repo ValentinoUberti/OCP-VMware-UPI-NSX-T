@@ -1,0 +1,21 @@
+---
+- name: Play to provision NEW OCP4 NODE
+  hosts: localhost
+  become: yes
+
+  vars_files:
+    - "{{ playbook_dir }}/../vars/ocp4-vars-vmware-upi-installer.yaml"
+
+  tasks:
+    - name: include create task vms for NEW workers node
+      include_tasks: "{{ playbook_dir }}/../tasks/ocp4-nodes-create.yaml"
+      vars:
+        nodes: "{{ new_workers }}"
+        ignition_payload: "{{ worker_ign }}"
+        default_gw: "{{ machineCIDR_default_gw }}"
+        netmask: "{{ machineCIDR_netmask }}"
+        nameservers: "{{ machineDNS }}"
+      tags: vmware
+      when: new_workers is defined
+
+#echo "q" | openssl s_client -connect $MCS  -showcerts | awk '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/' | base64 --wrap=0 | tee ./api-int.base64 && sed --regexp-extended --in-place=.backup "s%base64,[a-zA-Z0-9+\/=]+%base64,$(cat ./api-int.base64)%" ./worker.ign

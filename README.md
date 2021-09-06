@@ -163,3 +163,20 @@ $ govc ls /DC1/vm/ocp4
 Pull requests are wellcome!
 
 Please provide your contributions by [branching](https://guides.github.com/introduction/flow/) master branch.
+
+docker.io/vmware/nsx-container-plugin-operator 
+/root/CA2038.cer
+radice.123
+VMware!
+
+openssl req -config harbor-cert.cnf -nodes -new -out harbor.gbbper.priv.csr -key harbor.gbbper.priv.key
+
+
+
+
+
+Record A harbor.gbbper.priv
+
+./openshift-install --dir=<installation_directory> wait-for bootstrap-complete --log-level=info 
+
+

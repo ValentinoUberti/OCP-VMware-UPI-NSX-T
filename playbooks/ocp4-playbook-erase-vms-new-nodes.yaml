@@ -1,0 +1,14 @@
+---
+- name: Play to erase VMs of OCP cluster
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - "{{ playbook_dir }}/../vars/ocp4-vars-vmware-upi-installer.yaml"
+
+  tasks:
+    - name: include erase task vms for workers NEW workers node
+      include_tasks: "{{ playbook_dir }}/../tasks/ocp4-nodes-erase.yaml"
+      vars:
+        nodes: "{{ new_workers }}"
+      when: new_workers is defined
+

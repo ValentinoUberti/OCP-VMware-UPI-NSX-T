@@ -2,7 +2,7 @@
 ############## General variables to set working environment - BEGIN
 # Directory to store openshift installation files:
 work_dir: "/tmp/openshift-install-{{ lookup('pipe','date +%Y%m%d') }}"
-ocp_version: 4.7.16
+ocp_version: 4.7.19
 openshift_clients_url: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{ ocp_version }}"
 client_linux: "openshift-client-linux-{{ ocp_version }}.tar.gz"
 install_linux: "openshift-install-linux-{{ ocp_version }}.tar.gz"
@@ -23,14 +23,14 @@ use_proxy_for_yum: no
 
 ############## VMware vCenter variables - BEGIN
 vcenter:
-  hostname: "deathstar.ipa.gpslab.club"
-  username: "vmware_sa"
-  password: "pest-mary-carry"
-  datacenter: "gpslab"
-  cluster: "clu01"
-  datastore: "vsanDatastore"
-  network: "lab03"
-  folder: "/gpslab/vm/lab03"
+  hostname: ""
+  username: ""
+  password: ""
+  datacenter: ""
+  cluster: ""
+  datastore: ""
+  network: ""
+  folder: ""
 # Variable required if multiple distributed portgroups exists:
 #  dvswitch_name: ""
 ova_template_name: '/gpslab/vm/Templates/rhcos-4.7.13'
@@ -39,20 +39,20 @@ vm_boot_delay: 10000
 
 ################## Parameters used for install-config.yaml file - BEGIN
 # base_domain of ocp4 cluster and cluster_name: 
-base_domain: "gpslab.club"
-cluster_name: "lab03"
+base_domain: "gbbper.priv"
+cluster_name: "ocp4-cls-lab"
 
 openshift:
-  networkType: "OpenShiftSDN"
+  networkType: "ncp"
   clusterNetwork:
     cidr: "10.128.0.0/14"
     hostPrefix: "23"
   serviceNetwork: "172.30.0.0/16"
-  machineCIDR: "192.168.103.0/24"
+  machineCIDR: "172.28.155.0/24"
 
-pull_secret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K21iZXR0aXJobjFpbThreGwzNWpjZ3E3YmJrZWN2Y3g5bHp6cjpKUjQxQTlUSklHQVVZVVoxMVBPR1dPSTdDSzE4VDQ2SENYSElSQUtHQ0Q1MFI3SFZaU0M2RTE5R081V1FOSkxF","email":"mbetti@redhat.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K21iZXR0aXJobjFpbThreGwzNWpjZ3E3YmJrZWN2Y3g5bHp6cjpKUjQxQTlUSklHQVVZVVoxMVBPR1dPSTdDSzE4VDQ2SENYSElSQUtHQ0Q1MFI3SFZaU0M2RTE5R081V1FOSkxF","email":"mbetti@redhat.com"},"registry.connect.redhat.com":{"auth":"NTIzNTA5MjF8dWhjLTFJTThLWGwzNWpjR1E3YkJrRWN2Q3g5bHpaUjpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmlOakUxWlRrME1ESmlZVGcwWm1Vek9UUmtNRGRrWVRkaE5ETXlaVGd3WlNKOS5YMkxONnBQUWJhR2lFWHo0SENXTVl6eWtrOUhjSXRWSEFPXzN1eXhyMVB0VExkY2dROWRyX2J6YVNmaGZJb1Vua3g2NE5Xa1Y5MnNXNkFPVDNpRE5IQUlJMmVkaDZLX3ZHRlZBeS1ETzBCWEl3SEZtUmpjYnl1UEdRTnI1aW9EWldxME1LRWZlQzVvM2VncGQyVEFtbl9MVWFQalZEeWN0eVZhU01qSEhBVXlwdnh4MmZsSE9ObERLTUxGbzJRcmRlUGNwcVhYa1hOWXh1TXEtT3hoNzVpT0N4VXVzUFlXbDIwVkZZcWJzVXdtVkh3YzR1dGJ2T2N3b0ViYlh5dlNYSVVpUjhTNExHUWszd3dwd2QtT2F2RjNDYkhlNHBJSjVzVFQ1ei1wVDlObmhOWm01S2xZdHlDaTJYMGtFMnVhMzA0cFBEamVQM1hyUkp0azFUeTlFU0d4MU1oMTRKWnFQMEc4anpCdGtBMG8xVERvLTd3aEhXR3FfZzFFUUhJVGhNZTM5M3dQRjJPamprSmstUXNheTMyN1h1TnI4ZFdXbzR6NHoyRXEzb0tuX09NUjB2NjJwSElvbWViYnUyYi0tZzZzdWtTamNtRlluWlB5WXU1aE81NV90eGxvVU1MZGNBbVU4eEFnc1BhSWFBOFlUUlZXUWlvVnpkWkx2TzcwaXh4QnJaOGd3M2d1Z0tVeW15U3k1M3FFTGduRHhzYTJnYk9lUmtnZ3oyeXZQSzlUY2ItQ0tGc0ZZYXlIaG5LQmY5eDlRNmFVQThZX2VSb0NHb3RwQVVKbTItNk9rdFo2emRqUzhSVDF3SVRZWmp3STUtX2E5Y1h4VlJYc3ZKMktfZDZYa19PTzZkM29uNV9wM1ZBWnBqaTRyRExfcVNLc29QSWRGdnVXTHBTRQ==","email":"mbetti@redhat.com"},"registry.redhat.io":{"auth":"NTIzNTA5MjF8dWhjLTFJTThLWGwzNWpjR1E3YkJrRWN2Q3g5bHpaUjpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmlOakUxWlRrME1ESmlZVGcwWm1Vek9UUmtNRGRrWVRkaE5ETXlaVGd3WlNKOS5YMkxONnBQUWJhR2lFWHo0SENXTVl6eWtrOUhjSXRWSEFPXzN1eXhyMVB0VExkY2dROWRyX2J6YVNmaGZJb1Vua3g2NE5Xa1Y5MnNXNkFPVDNpRE5IQUlJMmVkaDZLX3ZHRlZBeS1ETzBCWEl3SEZtUmpjYnl1UEdRTnI1aW9EWldxME1LRWZlQzVvM2VncGQyVEFtbl9MVWFQalZEeWN0eVZhU01qSEhBVXlwdnh4MmZsSE9ObERLTUxGbzJRcmRlUGNwcVhYa1hOWXh1TXEtT3hoNzVpT0N4VXVzUFlXbDIwVkZZcWJzVXdtVkh3YzR1dGJ2T2N3b0ViYlh5dlNYSVVpUjhTNExHUWszd3dwd2QtT2F2RjNDYkhlNHBJSjVzVFQ1ei1wVDlObmhOWm01S2xZdHlDaTJYMGtFMnVhMzA0cFBEamVQM1hyUkp0azFUeTlFU0d4MU1oMTRKWnFQMEc4anpCdGtBMG8xVERvLTd3aEhXR3FfZzFFUUhJVGhNZTM5M3dQRjJPamprSmstUXNheTMyN1h1TnI4ZFdXbzR6NHoyRXEzb0tuX09NUjB2NjJwSElvbWViYnUyYi0tZzZzdWtTamNtRlluWlB5WXU1aE81NV90eGxvVU1MZGNBbVU4eEFnc1BhSWFBOFlUUlZXUWlvVnpkWkx2TzcwaXh4QnJaOGd3M2d1Z0tVeW15U3k1M3FFTGduRHhzYTJnYk9lUmtnZ3oyeXZQSzlUY2ItQ0tGc0ZZYXlIaG5LQmY5eDlRNmFVQThZX2VSb0NHb3RwQVVKbTItNk9rdFo2emRqUzhSVDF3SVRZWmp3STUtX2E5Y1h4VlJYc3ZKMktfZDZYa19PTzZkM29uNV9wM1ZBWnBqaTRyRExfcVNLc29QSWRGdnVXTHBTRQ==","email":"mbetti@redhat.com"}}}'
+pull_secret: ''
 
-ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqmlrowTqJRz0HkVW4ckWbB4lSreYnqUZfjVbj6I+5jTRqs6cP6olbVr3PNu1DyBGKXxOS6kCDYXxnJ+ZP98AcL9oIEjnJoGSY2Vdkix4S1SdKXuOKzMc8GJe11e/i6VBDg52mMIcjeWSVWIHA9gNsrdsKjcV6fHgjjZZ4rOjRrsfItV8Um4BKpofXugCA2Eq14nmjfSnHQUHH29GBedG7XjaV3USKJ4zSUWm/lgHipNi4QLr0e0unsOah/0yHDuyg6Yp0FeRAFuroP4rD1og9zmwSiOkgxFXlWgAmAqK8kJL8fvNSfIcLBju2h5SHFlPHrEehJqtEd8fco6Hq+FKL mbetti@bastion.lab03.ipa.gpslab.club'
+ssh_key: ''
 
 bootstrap_ignition_config_url: "http://{{ ansible_default_ipv4.address }}:{{ httpd_port }}/bootstrap.ign"
 ################## Parameters used for install-config.yaml file - END
@@ -80,17 +80,17 @@ mac_range_start: 00:50:56:00:22
 static_ip: true
 
 bootstrap:
-- { name: "bootstrap.lab03", mac: "{{ mac_range_start }}:00", ip: "{{ machineCIDR_first_three_octects }}.60", disk: "120", memory: "16000", cpu: "4" }
+- { name: "bootstrap.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:00", ip: "{{ machineCIDR_first_three_octects }}.140", disk: "120", memory: "16000", cpu: "4" }
 
 masters:
-- { name: "master1.lab03", mac: "{{ mac_range_start }}:01", ip: "{{ machineCIDR_first_three_octects }}.61", disk: "120", memory: "16000", cpu: "4" }
-- { name: "master2.lab03", mac: "{{ mac_range_start }}:02", ip: "{{ machineCIDR_first_three_octects }}.62", disk: "120", memory: "16000", cpu: "4" }
-- { name: "master3.lab03", mac: "{{ mac_range_start }}:03", ip: "{{ machineCIDR_first_three_octects }}.63", disk: "120", memory: "16000", cpu: "4" }
+- { name: "ocp4-lab-master01.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:01", ip: "{{ machineCIDR_first_three_octects }}.141", disk: "120", memory: "16000", cpu: "4" }
+- { name: "ocp4-lab-master02.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:02", ip: "{{ machineCIDR_first_three_octects }}.142", disk: "120", memory: "16000", cpu: "4" }
+- { name: "ocp4-lab-master03.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:03", ip: "{{ machineCIDR_first_three_octects }}.143", disk: "120", memory: "16000", cpu: "4" }
 
 workers:
-- { name: "worker1.lab03", mac: "{{ mac_range_start }}:04", ip: "{{ machineCIDR_first_three_octects }}.64", disk: "120", memory: "32000", cpu: "8" }
-- { name: "worker2.lab03", mac: "{{ mac_range_start }}:05", ip: "{{ machineCIDR_first_three_octects }}.65", disk: "120", memory: "32000", cpu: "8" }
-- { name: "worker3.lab03", mac: "{{ mac_range_start }}:06", ip: "{{ machineCIDR_first_three_octects }}.66", disk: "120", memory: "32000", cpu: "8" }
+- { name: "ocp4-lab-worker01.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:04", ip: "{{ machineCIDR_first_three_octects }}.151", disk: "120", memory: "32000", cpu: "8" }
+- { name: "ocp4-lab-worker02.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:05", ip: "{{ machineCIDR_first_three_octects }}.152", disk: "120", memory: "32000", cpu: "8" }
+- { name: "ocp4-lab-worker03.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:06", ip: "{{ machineCIDR_first_three_octects }}.153", disk: "120", memory: "32000", cpu: "8" }
 #- { name: "worker4.lab03", mac: "{{ mac_range_start }}:07", ip: "{{ machineCIDR_first_three_octects }}.67", disk: "120", memory: "16000", cpu: "4" }
 #- { name: "worker5.lab03", mac: "{{ mac_range_start }}:08", ip: "{{ machineCIDR_first_three_octects }}.68", disk: "120", memory: "16000", cpu: "4" }
 #- { name: "worker6.lab03", mac: "{{ mac_range_start }}:09", ip: "{{ machineCIDR_first_three_octects }}.69", disk: "120", memory: "8000", cpu: "4" }
@@ -98,6 +98,10 @@ workers:
 #- { name: "worker8.lab03", mac: "{{ mac_range_start }}:11", ip: "{{ machineCIDR_first_three_octects }}.71", disk: "120", memory: "48000", cpu: "12" }
 #- { name: "worker9.lab03", mac: "{{ mac_range_start }}:12", ip: "{{ machineCIDR_first_three_octects }}.72", disk: "120", memory: "48000", cpu: "12" }
 ################## OpenShift Nodes details to provision VMs on vmware vCenter - EN
+
+
+new_workers:
+- - { name: "ocp4-lab-worker01.ocp4-cls-lab.gbbper.priv", mac: "{{ mac_range_start }}:07", ip: "{{ machineCIDR_first_three_octects }}.151", disk: "120", memory: "32000", cpu: "8" }
 
 storage_nodes:
 - "worker1.lab03"

@@ -1,0 +1,15 @@
+vCenter: vmwab51vc0.dominio.priv
+UserName Tecnica:  DOMINIO\UserVMWAB51OCP
+Password = la stessa usata su NSX
+DataCenter:    DataCenterAB51
+cluster: clvmwab5101
+folder = da creare a piacere
+resource pool = non usato, usate direttamente il cluster.
+Datastore = una delle 2 a disposizione   ( NFD_LNX_TSC_100_F2260MOC, NFD_LNX_TSC_101_F2260MOC)
+
+
+export GOVC_URL="vmwab51vc0.dominio.priv"
+export GOVC_USERNAME="DOMINIO\UserVMWAB51OCP"
+export GOVC_PASSWORD=""
+export GOVC_INSECURE=1
+export GOVC_DATASTORE="NFD_LNX_TSC_101_F2260MOC"

@@ -1,0 +1,29 @@
+---
+- name: Play to provision OCP4 cluster
+  hosts: localhost
+  become: yes
+
+  vars_files:
+    - "{{ playbook_dir }}/../vars/ocp4-vars-vmware-upi-installer.yaml"
+
+  tasks:
+    - name: Assert that we are running on RedHat family system
+      assert:
+        that:
+          - "ansible_os_family == 'RedHat'"
+      tags: [ create_manifest ]
+
+    - name: include task for client setup
+      include_tasks: "{{ playbook_dir }}/../tasks/ocp4-client-setup.yaml"
+      tags: [ download_client, create_manifest ]
+
+    - name: include task for yum proxy setup
+      include_tasks: "{{ playbook_dir }}/../tasks/yum_set_proxy.yaml"
+      tags: [ create_manifest ]
+
+    - name: include task vms for ignition config
+      include_tasks: "{{ playbook_dir }}/../tasks/ocp4-ignition-config-1.yaml"
+      tags: [ replaceign, create_manifest ]
+
+   
+
