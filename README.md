@@ -40,7 +40,8 @@ Other useful information are provided within Ansible [VMware Guide](https://docs
 Playbook name | Description
 --- | ---
 `ocp4-playbook-vmware-prereq.yaml` | Install vmware_guest ansible module's prerequisites (currently pyvmomi).
-`ocp4-playbook-cluster-create.yaml`| Setup the OpenShift 4 cluster manifests (ignition files, certificates) and creates VMs on vmware cluster. All VMs are created powered off.
+`ocp4-playbook-cluster-create-1.yaml`| Setup the OpenShift 4 cluster manifests 
+`ocp4-playbook-cluster-create-2.yaml`| Creates VMs on vmware cluster. All VMs are created powered off.
 `ocp4-playbook-poweron-vms.yaml`| Power on OpenShift VMs on vmware cluster.
 `ocp4-playbook-erase-vms.yaml`| Power off and erase OpenShift  VMs on vmware cluster.
 `ocp4-playbook-test-uri.yaml` | Test https get to URI required to install and use OpenShift.
