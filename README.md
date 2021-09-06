@@ -58,7 +58,9 @@ Playbook name | Description
 1. test URI https get with playbook `ocp4-playbook-test-uri.yaml`
 1. test DNS records configuration with playbook `ocp4-playbook-test-dns.yaml`
 1. install ansible vmware_guest prerequisites with playbook `ocp4-playbook-vmware-prereq.yaml`
-1. create OpenShift Cluster on vmware with playbook `ocp4-playbook-cluster-create.yaml`
+1. create OpenShift Cluster on vmware with playbook `ocp4-playbook-cluster-create-1.yaml`
+1. Copy nsx-t configuration yml to /tmp/ install directory
+1. Continue OpenShift Cluster installation with playbook `ocp4-playbook-cluster-create-2.yaml`
 1. poweron VMs with playbook `ocp4-playbook-poweron-vms.yaml`
 
 All playbooks run on localhost. To run them, simply type:
