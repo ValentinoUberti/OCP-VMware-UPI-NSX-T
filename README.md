@@ -1,6 +1,8 @@
 # OpenShift 4 vmware UPI Installer
 This repository contains [Ansible](https://www.ansible.com/) playbooks and tasks for [OpenShift](https://www.openshift.com/) 4 cluster installation on vmware with UPI mode.
 
+The original repository was made by Marco Betti: https://github.com/marbe/ocp4-vmware-upi-installer
+
 The aim of this playbooks is to automate the UPI installation steps described into [Red Hat OpenShift documentation](https://docs.openshift.com/container-platform/4.3/installing/installing_vsphere/installing-vsphere.html)
 
 These playbooks have been tested with **OpenShift Container Platform** up to **4.7.z**. 
